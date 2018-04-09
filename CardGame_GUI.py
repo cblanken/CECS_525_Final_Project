@@ -13,8 +13,8 @@ class Main:
         self.parent = parent
         self.frame = tk.Frame(self.parent)
 
-    # parent.title("Hello World")
-    # parent.geometry('650x450')
+        parent.title("War Game")
+        parent.geometry('650x450')
 
 
 
@@ -30,9 +30,11 @@ class MainApplication:
         self.main.frame.pack(side="right", fill="both", expand=True)
 
 
-
-
-if __name__ == "__main__":
+def main():
     root = tk.Tk()
     mainApp = MainApplication(root)
     root.mainloop()
+
+
+if __name__ == "__main__":
+    main()
