@@ -1,5 +1,15 @@
+'''
+# Written by: Cameron Blankenbuehler
+# Course: CECS 525 Team 8 Spring 2018 Final Project
+# Title: War Game
+#
+#
+'''
+
 import tkinter as tk
 
+class Deck:
+    def __init__(self):
 
 
 class Statusbar:
