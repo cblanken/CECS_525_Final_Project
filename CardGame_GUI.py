@@ -37,78 +37,84 @@ class Rank(Enum):
 
 
 class Card:
-    def __init__(self, suit, rank, img=None):
-        self.suit = suit
-        self.rank = rank
+    def __init__(self, suit_name, suit_value, rank_name, rank_value, img=None):
+        self.suit_name = suit_name
+        self.suit_value = suit_value
+        self.rank_name = rank_name
+        self.rank_value = rank_value
         self.img = img
 
     def __str__(self):
         return "Suit: " + str(self.suit) + "\nRank: " + str(self.rank)
 
 
-class Deck():
+class Deck:
     def __init__(self):
-        suit_names = ['clubs', 'diamonds', 'hearts', 'spades']
-
         # Clubs
-        two_clubs = Card(Suit.clubs, Rank.two)
-        three_clubs = Card(Suit.clubs, Rank.three)
-        four_clubs = Card(Suit.clubs, Rank.four)
-        five_clubs = Card(Suit.clubs, Rank.five)
-        six_clubs = Card(Suit.clubs, Rank.six)
-        seven_clubs = Card(Suit.clubs, Rank.seven)
-        eight_clubs = Card(Suit.clubs, Rank.eight)
-        nine_clubs = Card(Suit.clubs, Rank.nine)
-        ten_clubs = Card(Suit.clubs, Rank.ten)
-        jack_clubs = Card(Suit.clubs, Rank.jack)
-        queen_clubs = Card(Suit.clubs, Rank.queen)
-        king_clubs = Card(Suit.clubs, Rank.king)
-        ace_clubs = Card(Suit.clubs, Rank.ace)
+        two_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.two.name, Rank.two)
+        three_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.three.name, Rank.three)
+        four_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.four.name, Rank.four)
+        five_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.five.name, Rank.five)
+        six_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.six.name, Rank.six)
+        seven_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.seven.name, Rank.seven)
+        eight_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.eight.name, Rank.eight)
+        nine_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.nine.name, Rank.nine)
+        ten_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.ten.name, Rank.ten)
+        jack_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.jack.name, Rank.jack)
+        queen_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.queen.name, Rank.queen)
+        king_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.king.name, Rank.king)
+        ace_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.ace.name, Rank.ace)
 
         # Diamonds
-        two_diamonds = Card(Suit.diamonds, Rank.two)
-        three_diamonds = Card(Suit.diamonds, Rank.three)
-        four_diamonds = Card(Suit.diamonds, Rank.four)
-        five_diamonds = Card(Suit.diamonds, Rank.five)
-        six_diamonds = Card(Suit.diamonds, Rank.six)
-        seven_diamonds = Card(Suit.diamonds, Rank.seven)
-        eight_diamonds = Card(Suit.diamonds, Rank.eight)
-        nine_diamonds = Card(Suit.diamonds, Rank.nine)
-        ten_diamonds = Card(Suit.diamonds, Rank.ten)
-        jack_diamonds = Card(Suit.diamonds, Rank.jack)
-        queen_diamonds = Card(Suit.diamonds, Rank.queen)
-        king_diamonds = Card(Suit.diamonds, Rank.king)
-        ace_diamonds = Card(Suit.diamonds, Rank.ace)
+        two_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.two.name, Rank.two)
+        three_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.three.name, Rank.three)
+        four_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.four.name, Rank.four)
+        five_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.five.name, Rank.five)
+        six_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.six.name, Rank.six)
+        seven_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.seven.name, Rank.seven)
+        eight_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.eight.name, Rank.eight)
+        nine_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.nine.name, Rank.nine)
+        ten_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.ten.name, Rank.ten)
+        jack_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.jack.name, Rank.jack)
+        queen_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.queen.name, Rank.queen)
+        king_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.king.name, Rank.king)
+        ace_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.ace.name, Rank.ace)
 
         # Hearts
-        two_hearts = Card(Suit.hearts, Rank.two)
-        three_hearts = Card(Suit.hearts, Rank.three)
-        four_hearts = Card(Suit.hearts, Rank.four)
-        five_hearts = Card(Suit.hearts, Rank.five)
-        six_hearts = Card(Suit.hearts, Rank.six)
-        seven_hearts = Card(Suit.hearts, Rank.seven)
-        eight_hearts = Card(Suit.hearts, Rank.eight)
-        nine_hearts = Card(Suit.hearts, Rank.nine)
-        ten_hearts = Card(Suit.hearts, Rank.ten)
-        jack_hearts = Card(Suit.hearts, Rank.jack)
-        queen_hearts = Card(Suit.hearts, Rank.queen)
-        king_hearts = Card(Suit.hearts, Rank.king)
-        ace_hearts = Card(Suit.hearts, Rank.ace)
+        two_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.two.name, Rank.two)
+        three_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.three.name, Rank.three)
+        four_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.four.name, Rank.four)
+        five_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.five.name, Rank.five)
+        six_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.six.name, Rank.six)
+        seven_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.seven.name, Rank.seven)
+        eight_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.eight.name, Rank.eight)
+        nine_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.nine.name, Rank.nine)
+        ten_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.ten.name, Rank.ten)
+        jack_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.jack.name, Rank.jack)
+        queen_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.queen.name, Rank.queen)
+        king_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.king.name, Rank.king)
+        ace_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.ace.name, Rank.ace)
 
         # Spades
-        two_spades = Card(Suit.spades, Rank.two)
-        three_spades = Card(Suit.spades, Rank.three)
-        four_spades = Card(Suit.spades, Rank.four)
-        five_spades = Card(Suit.spades, Rank.five)
-        six_spades = Card(Suit.spades, Rank.six)
-        seven_spades = Card(Suit.spades, Rank.seven)
-        eight_spades = Card(Suit.spades, Rank.eight)
-        nine_spades = Card(Suit.spades, Rank.nine)
-        ten_spades = Card(Suit.spades, Rank.ten)
-        jack_spades = Card(Suit.spades, Rank.jack)
-        queen_spades = Card(Suit.spades, Rank.queen)
-        king_spades = Card(Suit.spades, Rank.king)
-        ace_spades = Card(Suit.spades, Rank.ace)
+        two_spades = Card(Suit.spades.name, Suit.spades, Rank.two.name, Rank.two)
+        three_spades = Card(Suit.spades.name, Suit.spades, Rank.three.name, Rank.three)
+        four_spades = Card(Suit.spades.name, Suit.spades, Rank.four.name, Rank.four)
+        five_spades = Card(Suit.spades.name, Suit.spades, Rank.five.name, Rank.five)
+        six_spades = Card(Suit.spades.name, Suit.spades, Rank.six.name, Rank.six)
+        seven_spades = Card(Suit.spades.name, Suit.spades, Rank.seven.name, Rank.seven)
+        eight_spades = Card(Suit.spades.name, Suit.spades, Rank.eight.name, Rank.eight)
+        nine_spades = Card(Suit.spades.name, Suit.spades, Rank.nine.name, Rank.nine)
+        ten_spades = Card(Suit.spades.name, Suit.spades, Rank.ten.name, Rank.ten)
+        jack_spades = Card(Suit.spades.name, Suit.spades, Rank.jack.name, Rank.jack)
+        queen_spades = Card(Suit.spades.name, Suit.spades, Rank.queen.name, Rank.queen)
+        king_spades = Card(Suit.spades.name, Suit.spades, Rank.king.name, Rank.king)
+        ace_spades = Card(Suit.spades.name, Suit.spades, Rank.ace.name, Rank.ace)
+
+class Hand(Deck):
+    def __init__(self, *args):
+        self.hand = []
+        for arg in args:
+            hand.append(arg)
 
 
 ### END Card Deck Stuff
@@ -116,6 +122,12 @@ class Deck():
 
 
 ### GUI Stuff
+class CardDisplay:
+    def __init__(self, parent):
+        self.parent = parent
+        self.frame = tk.Frame(self.parent)
+
+
 class Statusbar:
     def __init__(self, parent):
         self.parent = parent
@@ -129,7 +141,7 @@ class Main:
 
         parent.title("War Game")
         parent.geometry('650x450')
-        WarDeck = Deck()
+        deck = Deck()
 
 
 
@@ -140,9 +152,11 @@ class MainApplication:
 
         self.statusbar = Statusbar(master)
         self.main = Main(master)
+        self.carddisplay = CardDisplay(master)
 
         self.statusbar.frame.pack(side="bottom", fill="x")
         self.main.frame.pack(side="right", fill="both", expand=True)
+        self.carddisplay.frame.pack(side="right", fill="y", expand=True)
 
 ### END GUI Stuff
 
