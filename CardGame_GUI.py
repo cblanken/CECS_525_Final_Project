@@ -5,7 +5,7 @@
 #
 #
 '''
-
+import os as os
 import tkinter as tk
 from enum import Enum
 
@@ -127,6 +127,12 @@ class CardDisplay:
         self.parent = parent
         self.frame = tk.Frame(self.parent)
 
+        self.current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/ace_clubs.png")
+        self.card_image = tk.PhotoImage(file=self.current_path)
+        self.card_image = self.card_image.zoom(2)
+        self.card_image = self.card_image.subsample(24)
+        self.card_Lbl = tk.Label(self.frame, image=self.card_image)
+        self.card_Lbl.pack(side=tk.RIGHT)
 
 class Statusbar:
     def __init__(self, parent):
@@ -156,7 +162,7 @@ class MainApplication:
 
         self.statusbar.frame.pack(side="bottom", fill="x")
         self.main.frame.pack(side="right", fill="both", expand=True)
-        self.carddisplay.frame.pack(side="right", fill="y", expand=True)
+        self.carddisplay.frame.pack(side="right", fill="x", expand=False)
 
 ### END GUI Stuff
 
