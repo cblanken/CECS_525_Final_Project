@@ -7,6 +7,7 @@
 '''
 import os as os
 import tkinter as tk
+from tkinter import ttk
 from enum import Enum
 
 
@@ -131,38 +132,50 @@ class CardDisplay:
         self.card_image = tk.PhotoImage(file=self.current_path)
         self.card_image = self.card_image.zoom(2)
         self.card_image = self.card_image.subsample(24)
-        self.card_Lbl = tk.Label(self.frame, image=self.card_image)
+
+        self.divider = ttk.Separator(self.frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
+        self.card_Lbl = tk.Label(self.frame, image=self.card_image, borderwidth=15)
+        # Make reference for image to avoid garbage collection
+        self.card_Lbl.image = self.card_image
         self.card_Lbl.pack(side=tk.RIGHT)
+
+
+    def updateDisplay(card_name):
+        self.current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + card_name + ".png")
+
+
 
 class Statusbar:
     def __init__(self, parent):
         self.parent = parent
         self.frame = tk.Frame(self.parent)
+        self.frame.height = 20
 
 
 class Main:
     def __init__(self, parent):
         self.parent = parent
         self.frame = tk.Frame(self.parent)
+        self.frame.width = 50
 
-        parent.title("War Game")
-        parent.geometry('650x450')
-        deck = Deck()
+        self.deck = Deck()
 
-
+        testLbl = tk.Label(self.frame, text="Start", font=("Cambria Bold", 16))
+        testLbl.pack()
 
 class MainApplication:
     def __init__(self, master, *args, **kwargs):
         self.master = master
         self.frame = tk.Frame(self.master)
 
-        self.statusbar = Statusbar(master)
-        self.main = Main(master)
-        self.carddisplay = CardDisplay(master)
+        self.master.title("War Game")
+        self.master.geometry('650x450')
 
-        self.statusbar.frame.pack(side="bottom", fill="x")
-        self.main.frame.pack(side="right", fill="both", expand=True)
-        self.carddisplay.frame.pack(side="right", fill="x", expand=False)
+        self.statusbar = Statusbar(master).frame.pack(side="bottom", fill="x")
+        self.main = Main(master).frame.pack(side="left", fill="both", expand=True)
+        self.carddisplay = CardDisplay(master).frame.pack(side="right", fill="y", expand=False)
+
+
 
 ### END GUI Stuff
 
