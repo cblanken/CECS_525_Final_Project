@@ -7,6 +7,7 @@
 '''
 import os as os
 import tkinter as tk
+
 from tkinter import ttk
 from enum import Enum
 
@@ -121,9 +122,14 @@ class WarGame:
     def __init__(self):
         self.round_cnt = 0
         self.deck = Deck()
-        player1_hand = Hand()
-        player2_hand = Hand()
-    
+        self.player1_hand = Hand()
+        self.player2_hand = Hand()
+        self.player1_on_table = []
+        self.player2_on_table = []
+
+    def playRound():
+        self.round_cnt += 1
+
 
 
 
@@ -143,15 +149,15 @@ class CardDisplay:
         self.card_image = self.card_image.subsample(23)
 
         self.divider = ttk.Separator(self.frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
-        self.card_Lbl = tk.Label(self.frame, image=self.card_image, borderwidth=20, bg='black')
+        self.card_lbl = tk.Label(self.frame, image=self.card_image, borderwidth=20, bg='black')
         # Make reference for image to avoid garbage collection
-        self.card_Lbl.image = self.card_image
-        self.card_Lbl.pack(side=tk.RIGHT)
+        self.card_lbl.image = self.card_image
+        self.card_lbl.pack(side=tk.RIGHT)
 
 
     def updateDisplay(new_path):
         self.current_path = new_path
-        self.card_Lbl.configure(image=self.card_image)
+        self.card_lbl.configure(image=self.card_image)
 
 
 class Statusbar:
@@ -159,7 +165,8 @@ class Statusbar:
         self.parent = parent
         self.frame = tk.Frame(self.parent)
         self.divider = ttk.Separator(self.frame, orient=tk.HORIZONTAL).pack(side="top", fill="x", expand=True)
-
+        self.start_btn = tk.Button(self.frame, text="START", font=("Cambria Bold", 14))
+        self.start_btn.pack(side="left")
 
 class Main:
     def __init__(self, parent):
@@ -169,8 +176,8 @@ class Main:
 
         self.deck = Deck()
 
-        testLbl = tk.Label(self.frame, text=self.deck.ace_clubs.suit_name, font=("Cambria Bold", 16))
-        testLbl.pack()
+        self.test_lbl = tk.Label(self.frame, text=self.deck.ace_clubs.suit_name, font=("Cambria Bold", 16))
+        self.test_lbl.pack()
 
 class MainApplication:
     def __init__(self, master, *args, **kwargs):
