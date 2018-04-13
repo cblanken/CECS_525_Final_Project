@@ -129,6 +129,16 @@ class WarGame:
 
     def playRound():
         self.round_cnt += 1
+        # Compare card rank then suit if necessary
+        if self.player1_on_table[0].rank_value > self.player2_on_table[0].rank_value:
+            return "player1"
+        elif self.player1_on_table[0].rank_value == self.player2_on_table[0].rank_value:
+            if(self.player1_on_table[0].suit_value > self.player2_on_table[0].suit_value):
+                return "player1"
+            else:
+                return "player2"
+        else:
+            return "player2"
 
 
 
@@ -165,8 +175,8 @@ class Statusbar:
         self.parent = parent
         self.frame = tk.Frame(self.parent)
         self.divider = ttk.Separator(self.frame, orient=tk.HORIZONTAL).pack(side="top", fill="x", expand=True)
-        self.start_btn = tk.Button(self.frame, text="START", font=("Cambria Bold", 14))
-        self.start_btn.pack(side="left")
+        self.start_btn = tk.Button(self.frame, text="START", font=("Cambria Bold", 11))
+        self.start_btn.pack(side="left", padx=3, pady=3)
 
 class Main:
     def __init__(self, parent):
