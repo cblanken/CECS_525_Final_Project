@@ -7,6 +7,7 @@
 '''
 import os as os
 import tkinter as tk
+import time as time
 
 from tkinter import ttk
 from enum import Enum
@@ -118,6 +119,8 @@ class Hand(Deck):
         for arg in args:
             hand.append(arg)
 
+### END Card Deck Stuff
+
 class WarGame:
     def __init__(self):
         self.round_cnt = 0
@@ -142,32 +145,46 @@ class WarGame:
 
 
 
-
-### END Card Deck Stuff
-
-
-
 ### GUI Stuff
 class CardDisplay:
     def __init__(self, parent):
         self.parent = parent
-        self.frame = tk.Frame(self.parent, bg='black')
+        self.frame = tk.Frame(self.parent)
+        self.left_frame = tk.Frame(self.frame, bg='black')
+        self.right_frame = tk.Frame(self.frame, bg='black')
 
-        self.current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/ace_clubs.png")
-        self.card_image = tk.PhotoImage(file=self.current_path)
-        self.card_image = self.card_image.zoom(2)
-        self.card_image = self.card_image.subsample(23)
-
-        self.divider = ttk.Separator(self.frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
-        self.card_lbl = tk.Label(self.frame, image=self.card_image, borderwidth=20, bg='black')
+        # Left (player1) card display
+        self.player1_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/ace_clubs.png")
+        self.player1_card_image = self.imgDownscale(tk.PhotoImage(file=self.player1_current_path))
+        self.divider = ttk.Separator(self.left_frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
+        self.player1_card_lbl = tk.Label(self.left_frame, image=self.player1_card_image, borderwidth=20, bg='black')
         # Make reference for image to avoid garbage collection
-        self.card_lbl.image = self.card_image
-        self.card_lbl.pack(side=tk.RIGHT)
+        self.player1_card_lbl.image = self.player1_card_image
+        self.player1_card_lbl.pack(side=tk.LEFT)
+        self.left_frame.pack(side=tk.LEFT, fill="y", expand=True)
 
+        # Right (player2) card display
+        self.player2_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/two_hearts.png")
+        self.player2_card_image = self.imgDownscale(tk.PhotoImage(file=self.player2_current_path))
+        self.divider = ttk.Separator(self.left_frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
+        self.player2_card_lbl = tk.Label(self.left_frame, image=self.player2_card_image, borderwidth=20, bg='black')
+        # Make reference for image to avoid garbage collection
+        self.player2_card_lbl.image = self.player2_card_image
+        self.player2_card_lbl.pack(side=tk.RIGHT)
+        self.right_frame.pack(side=tk.RIGHT, fill="y", expand=True)
 
-    def updateDisplay(new_path):
-        self.current_path = new_path
-        self.card_lbl.configure(image=self.card_image)
+    def imgDownscale(self, img):
+        return img.zoom(1).subsample(12)
+
+    def updateDisplay(self, player1_card_name, player2_card_name):
+        # Player1 card display update
+        self.player1_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + player1_card_name + ".png")
+        self.player1_card_image = imgDownscale(tk.PhotoImage(file=self.player1_current_path))
+        self.player1_card_lbl.config(image=self.player1_card_image)
+        # Player2 card display update
+        self.player2_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + player2_card_name + ".png")
+        self.player2_card_image = imgDownscale(tk.PhotoImage(file=self.player2_current_path))
+        self.player2_card_lbl.config(image=self.player2_card_image)
 
 
 class Statusbar:
@@ -195,12 +212,17 @@ class MainApplication:
         self.frame = tk.Frame(self.master)
 
         self.master.title("War Game")
-        self.master.geometry('800x450')
+        self.master.geometry('1000x600')
 
-        self.statusbar = Statusbar(master).frame.pack(side="bottom", fill="x")
-        self.main = Main(master).frame.pack(side="left", fill="both", expand=True)
-        self.carddisplay = CardDisplay(master).frame.pack(side="right", fill="both", expand=False)
+        self.statusbar = Statusbar(master)
+        self.main = Main(master)
+        self.carddisplay = CardDisplay(master)
 
+        self.statusbar.frame.pack(side="bottom", fill="x")
+        self.main.frame.pack(side="left", fill="both", expand=True)
+        self.carddisplay.frame.pack(side="right", fill="both", expand=False)
+
+        # self.carddisplay.updateDisplay("three_spades", "eight_hearts")
 
 
 ### END GUI Stuff
