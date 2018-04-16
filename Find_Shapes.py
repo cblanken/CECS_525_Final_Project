@@ -3,7 +3,7 @@
 # ----------------------
 
 # run by opening powershell window in folder and typing python Find_Shapes.py
-
+import os as os
 from Rank_Identifier import RankIdentifier
 from Suit_Identifier import SuitIdentifier
 import numpy as np
@@ -19,7 +19,7 @@ import cv2
 
 # load image
 #Image = cv2.imread(args["image"])
-Image = cv2.imread(r"Test Images\allRanksSuits.png")
+Image = cv2.imread(os.path.normpath("Image Recognition Stuff/Test Images/allRanksSuits.png"))
 print (Image.shape)
 
 #cv2.imshow("Original",Image)
