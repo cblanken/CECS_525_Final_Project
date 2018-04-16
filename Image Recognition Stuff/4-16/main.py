@@ -12,6 +12,7 @@ import cv2
 # read image
 Image = cv2.imread(r"Test Images\allRanksSuits.png")
 
+
 # identify card information
 card = cardInfo(Image)
 
