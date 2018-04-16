@@ -174,7 +174,7 @@ class CardDisplay:
         self.right_frame.pack(side=tk.RIGHT, fill="y", expand=True)
 
     def imgDownscale(self, img):
-        return img.zoom(1).subsample(12)
+        return img.zoom(1).subsample(10)
 
     def updateDisplay(self, player1_card_name, player2_card_name):
         # Player1 card display update
@@ -212,7 +212,7 @@ class MainApplication:
         self.frame = tk.Frame(self.master)
 
         self.master.title("War Game")
-        self.master.geometry('1000x600')
+        self.master.geometry('1200x700')
 
         self.statusbar = Statusbar(master)
         self.main = Main(master)
