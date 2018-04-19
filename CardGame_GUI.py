@@ -2,14 +2,13 @@
 # Written by: Cameron Blankenbuehler
 # Course: CECS 525 Team 8 Spring 2018 Final Project
 # Title: War Game
-#
+# Description:
 #
 '''
 
 import os as os
 import tkinter as tk
 import time as time
-# import Find_Shapes as FS
 
 from tkinter import ttk
 from enum import Enum
@@ -132,9 +131,16 @@ class WarGame:
         self.player1_on_table = []
         self.player2_on_table = []
 
+    def getCardsPlayed():
+        # Receive cards names/values form
+        self.player1_on_table = None
+        self.player2_on_table = None
+
+
     def playRound():
         self.round_cnt += 1
         # Compare card rank then suit if necessary
+        # return the winner
         if self.player1_on_table[0].rank_value > self.player2_on_table[0].rank_value:
             return "player1"
         elif self.player1_on_table[0].rank_value == self.player2_on_table[0].rank_value:
@@ -176,7 +182,7 @@ class CardDisplay:
         self.right_frame.pack(side=tk.RIGHT, fill="y", expand=True)
 
     def imgDownscale(self, img):
-        return img.zoom(1).subsample(10)
+        return img.zoom(1).subsample(13)
 
     def updateDisplay(self, player1_card_name, player2_card_name):
         # Player1 card display update
