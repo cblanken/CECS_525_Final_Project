@@ -9,6 +9,7 @@
 import os as os
 import tkinter as tk
 import time as time
+# import RPi.GPIO as GPIO
 
 from tkinter import ttk
 from enum import Enum
@@ -46,6 +47,7 @@ class Card:
         self.suit_value = suit_value
         self.rank_name = rank_name
         self.rank_value = rank_value
+        self.rank_suit = self.rank_name + "_" + self.suit_name
         self.img_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + rank_name + "_" + suit_name + ".png")
 
     # def __str__():
@@ -55,64 +57,64 @@ class Card:
 class Deck:
     def __init__(self):
         # Clubs
-        self.two_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.two.name, Rank.two)
-        self.three_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.three.name, Rank.three)
-        self.four_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.four.name, Rank.four)
-        self.five_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.five.name, Rank.five)
-        self.six_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.six.name, Rank.six)
-        self.seven_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.seven.name, Rank.seven)
-        self.eight_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.eight.name, Rank.eight)
-        self.nine_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.nine.name, Rank.nine)
-        self.ten_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.ten.name, Rank.ten)
-        self.jack_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.jack.name, Rank.jack)
-        self.queen_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.queen.name, Rank.queen)
-        self.king_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.king.name, Rank.king)
-        self.ace_clubs = Card(Suit.clubs.name, Suit.clubs, Rank.ace.name, Rank.ace)
+        self.two_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.two.name, Rank.two.value)
+        self.three_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.three.name, Rank.three.value)
+        self.four_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.four.name, Rank.four.value)
+        self.five_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.five.name, Rank.five.value)
+        self.six_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.six.name, Rank.six.value)
+        self.seven_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.seven.name, Rank.seven.value)
+        self.eight_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.eight.name, Rank.eight.value)
+        self.nine_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.nine.name, Rank.nine.value)
+        self.ten_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.ten.name, Rank.ten.value)
+        self.jack_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.jack.name, Rank.jack.value)
+        self.queen_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.queen.name, Rank.queen.value)
+        self.king_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.king.name, Rank.king.value)
+        self.ace_clubs = Card(Suit.clubs.name, Suit.clubs.value, Rank.ace.name, Rank.ace.value)
 
         # Diamonds
-        self.two_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.two.name, Rank.two)
-        self.three_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.three.name, Rank.three)
-        self.four_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.four.name, Rank.four)
-        self.five_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.five.name, Rank.five)
-        self.six_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.six.name, Rank.six)
-        self.seven_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.seven.name, Rank.seven)
-        self.eight_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.eight.name, Rank.eight)
-        self.nine_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.nine.name, Rank.nine)
-        self.ten_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.ten.name, Rank.ten)
-        self.jack_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.jack.name, Rank.jack)
-        self.queen_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.queen.name, Rank.queen)
-        self.king_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.king.name, Rank.king)
-        self.ace_diamonds = Card(Suit.diamonds.name, Suit.diamonds, Rank.ace.name, Rank.ace)
+        self.two_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.two.name, Rank.two.value)
+        self.three_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.three.name, Rank.three.value)
+        self.four_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.four.name, Rank.four.value)
+        self.five_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.five.name, Rank.five.value)
+        self.six_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.six.name, Rank.six.value)
+        self.seven_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.seven.name, Rank.seven.value)
+        self.eight_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.eight.name, Rank.eight.value)
+        self.nine_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.nine.name, Rank.nine.value)
+        self.ten_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.ten.name, Rank.ten.value)
+        self.jack_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.jack.name, Rank.jack.value)
+        self.queen_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.queen.name, Rank.queen.value)
+        self.king_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.king.name, Rank.king.value)
+        self.ace_diamonds = Card(Suit.diamonds.name, Suit.diamonds.value, Rank.ace.name, Rank.ace.value)
 
         # Hearts
-        self.two_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.two.name, Rank.two)
-        self.three_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.three.name, Rank.three)
-        self.four_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.four.name, Rank.four)
-        self.five_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.five.name, Rank.five)
-        self.six_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.six.name, Rank.six)
-        self.seven_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.seven.name, Rank.seven)
-        self.eight_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.eight.name, Rank.eight)
-        self.nine_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.nine.name, Rank.nine)
-        self.ten_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.ten.name, Rank.ten)
-        self.jack_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.jack.name, Rank.jack)
-        self.queen_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.queen.name, Rank.queen)
-        self.king_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.king.name, Rank.king)
-        self.ace_hearts = Card(Suit.hearts.name, Suit.hearts, Rank.ace.name, Rank.ace)
+        self.two_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.two.name, Rank.two.value)
+        self.three_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.three.name, Rank.three.value)
+        self.four_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.four.name, Rank.four.value)
+        self.five_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.five.name, Rank.five.value)
+        self.six_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.six.name, Rank.six.value)
+        self.seven_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.seven.name, Rank.seven.value)
+        self.eight_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.eight.name, Rank.eight.value)
+        self.nine_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.nine.name, Rank.nine.value)
+        self.ten_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.ten.name, Rank.ten.value)
+        self.jack_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.jack.name, Rank.jack.value)
+        self.queen_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.queen.name, Rank.queen.value)
+        self.king_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.king.name, Rank.king.value)
+        self.ace_hearts = Card(Suit.hearts.name, Suit.hearts.value, Rank.ace.name, Rank.ace.value)
 
         # Spades
-        self.two_spades = Card(Suit.spades.name, Suit.spades, Rank.two.name, Rank.two)
-        self.three_spades = Card(Suit.spades.name, Suit.spades, Rank.three.name, Rank.three)
-        self.four_spades = Card(Suit.spades.name, Suit.spades, Rank.four.name, Rank.four)
-        self.five_spades = Card(Suit.spades.name, Suit.spades, Rank.five.name, Rank.five)
-        self.six_spades = Card(Suit.spades.name, Suit.spades, Rank.six.name, Rank.six)
-        self.seven_spades = Card(Suit.spades.name, Suit.spades, Rank.seven.name, Rank.seven)
-        self.eight_spades = Card(Suit.spades.name, Suit.spades, Rank.eight.name, Rank.eight)
-        self.nine_spades = Card(Suit.spades.name, Suit.spades, Rank.nine.name, Rank.nine)
-        self.ten_spades = Card(Suit.spades.name, Suit.spades, Rank.ten.name, Rank.ten)
-        self.jack_spades = Card(Suit.spades.name, Suit.spades, Rank.jack.name, Rank.jack)
-        self.queen_spades = Card(Suit.spades.name, Suit.spades, Rank.queen.name, Rank.queen)
-        self.king_spades = Card(Suit.spades.name, Suit.spades, Rank.king.name, Rank.king)
-        self.ace_spades = Card(Suit.spades.name, Suit.spades, Rank.ace.name, Rank.ace)
+        self.two_spades = Card(Suit.spades.name, Suit.spades.value, Rank.two.name, Rank.two.value)
+        self.three_spades = Card(Suit.spades.name, Suit.spades.value, Rank.three.name, Rank.three.value)
+        self.four_spades = Card(Suit.spades.name, Suit.spades.value, Rank.four.name, Rank.four.value)
+        self.five_spades = Card(Suit.spades.name, Suit.spades.value, Rank.five.name, Rank.five.value)
+        self.six_spades = Card(Suit.spades.name, Suit.spades.value, Rank.six.name, Rank.six.value)
+        self.seven_spades = Card(Suit.spades.name, Suit.spades.value, Rank.seven.name, Rank.seven.value)
+        self.eight_spades = Card(Suit.spades.name, Suit.spades.value, Rank.eight.name, Rank.eight.value)
+        self.nine_spades = Card(Suit.spades.name, Suit.spades.value, Rank.nine.name, Rank.nine.value)
+        self.ten_spades = Card(Suit.spades.name, Suit.spades.value, Rank.ten.name, Rank.ten.value)
+        self.jack_spades = Card(Suit.spades.name, Suit.spades.value, Rank.jack.name, Rank.jack.value)
+        self.queen_spades = Card(Suit.spades.name, Suit.spades.value, Rank.queen.name, Rank.queen.value)
+        self.king_spades = Card(Suit.spades.name, Suit.spades.value, Rank.king.name, Rank.king.value)
+        self.ace_spades = Card(Suit.spades.name, Suit.spades.value, Rank.ace.name, Rank.ace.value)
 
 class Hand(Deck):
     def __init__(self, *args):
@@ -128,16 +130,17 @@ class WarGame:
         self.deck = Deck()
         self.player1_hand = Hand()
         self.player2_hand = Hand()
-        self.player1_on_table = []
-        self.player2_on_table = []
+        self.player1_on_table = [self.deck.ace_spades]
+        self.player2_on_table = [self.deck.ace_hearts]
 
-    def getCardsPlayed():
+    def getCardsPlayed(self):
         # Receive cards names/values form
-        self.player1_on_table = None
-        self.player2_on_table = None
+        self.player1_on_table[0] = getattr(self.deck, "four_hearts")
+        self.player2_on_table[0] = getattr(self.deck, "seven_clubs")
 
 
-    def playRound():
+    def playRound(self):
+        self.getCardsPlayed()
         self.round_cnt += 1
         # Compare card rank then suit if necessary
         # return the winner
@@ -172,7 +175,7 @@ class CardDisplay:
         self.left_frame.pack(side=tk.LEFT, fill="y", expand=True)
 
         # Right (player2) card display
-        self.player2_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/two_hearts.png")
+        self.player2_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/ace_spades.png")
         self.player2_card_image = self.imgDownscale(tk.PhotoImage(file=self.player2_current_path))
         self.divider = ttk.Separator(self.left_frame, orient=tk.VERTICAL).pack(side="left", fill="y", expand=True)
         self.player2_card_lbl = tk.Label(self.left_frame, image=self.player2_card_image, borderwidth=20, bg='black')
@@ -187,11 +190,11 @@ class CardDisplay:
     def updateDisplay(self, player1_card_name, player2_card_name):
         # Player1 card display update
         self.player1_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + player1_card_name + ".png")
-        self.player1_card_image = imgDownscale(tk.PhotoImage(file=self.player1_current_path))
+        self.player1_card_image = self.imgDownscale(tk.PhotoImage(file=self.player1_current_path))
         self.player1_card_lbl.config(image=self.player1_card_image)
         # Player2 card display update
         self.player2_current_path = os.path.normpath("Image Recognition Stuff/Cards Vector Files/" + player2_card_name + ".png")
-        self.player2_card_image = imgDownscale(tk.PhotoImage(file=self.player2_current_path))
+        self.player2_card_image = self.imgDownscale(tk.PhotoImage(file=self.player2_current_path))
         self.player2_card_lbl.config(image=self.player2_card_image)
 
 
@@ -229,6 +232,26 @@ class MainApplication:
         self.statusbar.frame.pack(side="bottom", fill="x")
         self.main.frame.pack(side="left", fill="both", expand=True)
         self.carddisplay.frame.pack(side="right", fill="both", expand=False)
+
+        self.wargame = WarGame()
+
+        def playRound():
+            self.wargame.playRound()
+            self.carddisplay.updateDisplay(self.wargame.player1_on_table[0].rank_suit, self.wargame.player2_on_table[0].rank_suit)
+
+        # self.winner = self.wargame.playRound()
+        # self.carddisplay.updateDisplay(self.wargame.player1_on_table[0].rank_suit, self.wargame.player2_on_table[0].rank_suit)
+
+        '''
+        ### GPIO Setup
+        GPIO.setmode(GPIO.BCM)
+        # pin 23 -> playRound button
+        GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        # interrupt button callback
+        GPIO.add_event_detect(23, GPIO.FALLING, callback=self.playRound, bouncetime=300)
+        '''
+
+
 
         # self.carddisplay.updateDisplay("three_spades", "eight_hearts")
 
