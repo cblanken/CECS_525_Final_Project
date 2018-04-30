@@ -14,6 +14,16 @@ import time as time
 from tkinter import ttk
 from enum import Enum
 
+#
+# from picamera import PiCamera
+#
+# camera = PiCamera()
+# camera.resolution = (1024, 768)
+# # camera.start_preview()
+# # Camera warm-up time
+# time.sleep(2)
+# camera.capture('foo{}.jpg'.format, 1)
+
 
 ### Card Deck Stuff
 class Suit(Enum):
